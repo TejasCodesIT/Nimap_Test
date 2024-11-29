@@ -1,6 +1,7 @@
 package com.tejas.JWT_Project.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,14 @@ public class CategoryService {
 		return categoryRepository.findAll();
 		
 	}
+	
+	public Optional<Category> getById(int id) {
+		
+		
+		return categoryRepository.findById(id);
+		
+	}
+	
 	
 	
 	public String postCategory(Category category) {
