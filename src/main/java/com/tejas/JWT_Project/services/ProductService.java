@@ -3,6 +3,9 @@ package com.tejas.JWT_Project.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.tejas.JWT_Project.model.Product;
@@ -16,11 +19,18 @@ public class ProductService {
 	
 	
 	
-	public List<Product> getProducts() {
+	public List<Product> getProducts(int pageNumber,int pageSize) {
 		
 		
-		return productRepository.findAll();
 		
+	
+		
+		Pageable pageable= PageRequest.of(pageNumber, pageSize);
+		
+		Page<Product> allproduct=productRepository.findAll(pageable);
+		
+
+		 return allproduct.getContent();
 	}
 	
 	public String insertProduct(Product product) {

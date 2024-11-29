@@ -10,6 +10,6 @@ import com.tejas.JWT_Project.model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 	
-	 Page<Product> findAll(Pageable pageable);
+	
 
 }
