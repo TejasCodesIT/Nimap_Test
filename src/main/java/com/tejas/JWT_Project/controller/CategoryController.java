@@ -20,7 +20,6 @@ import com.tejas.JWT_Project.services.CategoryService;
 public class CategoryController {
 	
 	
-	
 	@Autowired
 	private CategoryService categoryService;
 	

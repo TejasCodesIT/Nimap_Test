@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -25,24 +27,36 @@ public class Product {
 	
 	
 	
+	   @ManyToOne 
+	   private Category category; 
+
+	    @PrePersist
+	    public void prePersist() {
+	        	
+	        this.createdAt = LocalDateTime.now();
+	    }
+	
 	
 	public Product() {
 		super();
 		
 	}
-	
-	
-	public Product(int id, String product_name, String description, long price, LocalDateTime createdAt) {
+
+
+
+
+	public Product(int id, String product_name, String description, long price, LocalDateTime createdAt,
+			Category category) {
 		super();
 		this.id = id;
 		this.product_name = product_name;
 		this.description = description;
 		this.price = price;
 		this.createdAt = createdAt;
+		this.category = category;
 	}
 	
-	
-	
+
 	
 
 }
