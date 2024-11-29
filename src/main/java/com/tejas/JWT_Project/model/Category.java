@@ -21,7 +21,7 @@ public class Category {
 	
 	private String c_name ; 
     private String description;
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt; 
     
     @OneToMany
     private Product product;
@@ -35,8 +35,6 @@ public class Category {
 	}
 
 
-
-
 	public Category(int id, String c_name, String description, LocalDateTime createdAt, Product product) {
 		super();
 		this.id = id;
@@ -47,11 +45,6 @@ public class Category {
 	}
 	
 	
-	
-	
-	
-	
-   
-	
+
 
 }

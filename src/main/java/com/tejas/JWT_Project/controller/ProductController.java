@@ -1,0 +1,54 @@
+package com.tejas.JWT_Project.controller;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import com.tejas.JWT_Project.model.Product;
+import com.tejas.JWT_Project.services.ProductService;
+
+@RestController
+@RequestMapping("product")
+public class ProductController {
+	
+	@Autowired
+	private ProductService productService;
+	
+	
+	
+	@GetMapping
+	public List<Product> getProduct() {
+		
+		
+		return  productService.getProducts();
+		
+		
+	}
+	
+	public String postProduct(@RequestBody Product product) {
+		
+		
+		return productService.insertProduct(product) ; 
+		
+		
+	}
+	
+	public String putProduct(@RequestBody Product product) {
+		
+		
+		
+		return productService.updateProduct(product);
+	}
+	
+	public String deleteProduct(@RequestParam int id) {
+		
+		return productService.deleteProduct(id);
+		
+	}
+	
+	
+
+}
