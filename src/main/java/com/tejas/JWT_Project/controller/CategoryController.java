@@ -31,11 +31,16 @@ public class CategoryController {
 	  return 	categoryService.getCategories();	
 		
 	}
+	
+	
+	
 	 @GetMapping("/{di}")
 	    public Category getCategoryById(@PathVariable("di") int id) {
-	        // This method retrieves a category by its ID
+	        
 	        return categoryService.getById(id).get();
-	    }
+     }
+	 
+	 
 	
 	@PostMapping
 	public String postCategory(@RequestBody Category category) {
@@ -49,6 +54,13 @@ public class CategoryController {
 		return categoryService.updateCategory(category);
 		
 	}
+	
+	
+	 @PutMapping("/{di}")
+	    public Category updateCategoryById(@PathVariable("di") int id) {
+	        
+	        return categoryService.getById(id).get();
+  }
 	
 	@DeleteMapping
 	public String deleteByID(@RequestParam int id) {

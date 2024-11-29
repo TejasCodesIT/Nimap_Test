@@ -50,6 +50,29 @@ public class CategoryService {
 		
 	}
 	
+	
+	public String updateCategory(Category category,int id) {
+		
+		
+		Category dbcategory=categoryRepository.findById(id).get();
+		
+		if(dbcategory.equals(null)) {
+			
+			return "Category not found ";
+			
+		}
+		else {
+			category.setC_id(dbcategory.getC_id());
+			
+			
+			categoryRepository.save(category);
+			
+		}
+		
+		return "Updated" ;
+		
+	}
+	
 	public String deleteCategoryById(int id) {
 		
 		categoryRepository.deleteById(id);
