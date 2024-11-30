@@ -1,13 +1,15 @@
-package com.tejas.JWT_Project.services;
+package com.tejas.nimap.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.tejas.JWT_Project.model.Category;
-import com.tejas.JWT_Project.repository.CategoryRepository;
+import com.tejas.nimap.model.Category;
+import com.tejas.nimap.repository.CategoryRepository;
 
 @Service
 public class CategoryService {
@@ -18,10 +20,16 @@ public class CategoryService {
 	
 	
 	
-	public List<Category> getCategories() {
+	public List<Category> getCategories(int pageNumber,int pageSize) {
 		
 		
-		return categoryRepository.findAll();
+		Pageable pageable = PageRequest.of(pageNumber, pageSize);
+		
+		List<Category> list =categoryRepository.findAll(pageable).getContent();
+		
+		
+		
+		return list;
 		
 	}
 	
@@ -42,11 +50,20 @@ public class CategoryService {
 		return "inserted";
 	}
 	
-	public String updateCategory(Category category) {
+	public String updateCategoryById(int id,Category category) {
 		
-		categoryRepository.save(category);
+		Category dbcategory=categoryRepository.findById(id).get();
 		
-		return "Updated" ;
+		
+		
+		if(dbcategory!=null) {
+			dbcategory.setC_id(category.getC_id());
+			categoryRepository.save(category);
+			return "Updated" ;
+			
+		}else return "Category not found";
+				
+		
 		
 	}
 	
@@ -84,3 +101,28 @@ public class CategoryService {
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//	Name : - Tejas Wakchaure
+//	Batch : - JSD Mumbai Batch
+//	Mob :- 9022215242 
+// Email : - wakchaurtejas66@gmail.com

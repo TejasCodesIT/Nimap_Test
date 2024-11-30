@@ -1,4 +1,4 @@
-package com.tejas.JWT_Project.services;
+package com.tejas.nimap.services;
 
 import java.util.List;
 
@@ -8,8 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.tejas.JWT_Project.model.Product;
-import com.tejas.JWT_Project.repository.ProductRepository;
+import com.tejas.nimap.model.Product;
+import com.tejas.nimap.repository.ProductRepository;
 
 @Service
 public class ProductService {
@@ -33,6 +33,23 @@ public class ProductService {
 		 return allproduct.getContent();
 	}
 	
+	
+	public Product getProductById(int id) {
+		
+		Product product= productRepository.findById(id).get();
+		
+		
+		if(product !=null) {
+			
+			
+			return product;
+			
+		}
+		else return null;
+		
+	}
+	
+	
 	public String insertProduct(Product product) {
 		
 		
@@ -42,11 +59,24 @@ public class ProductService {
 	}
 	
 	
-	public String updateProduct(Product product) {
+	
+	public String updateById(Product product , int id) {
 		
-		productRepository.save(product);
+		Product dbproduct=productRepository.findById(id).get();
 		
-		return "Product Updated";
+		if(dbproduct!=null) {
+			
+			
+			dbproduct.setId(id);
+			
+			productRepository.save(dbproduct);
+			
+			return "Product Updated";
+			
+		}
+		else return "Existing product not find";
+		
+		
 		
 	}
 	
@@ -64,3 +94,31 @@ public class ProductService {
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Name : - Tejas Wakchaure
+//Batch : - JSD Mumbai Batch
+//Mob :- 9022215242 
+//Email : - wakchaurtejas66@gmail.com

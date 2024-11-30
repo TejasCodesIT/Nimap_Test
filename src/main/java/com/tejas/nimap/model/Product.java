@@ -1,4 +1,4 @@
-package com.tejas.JWT_Project.model;
+package com.tejas.nimap.model;
 
 import java.time.LocalDateTime;
 
@@ -55,4 +55,42 @@ public class Product {
     
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Name : - Tejas Wakchaure
+//Batch : - JSD Mumbai Batch
+//Mob :- 9022215242 
+//Email : - wakchaurtejas66@gmail.com
 
