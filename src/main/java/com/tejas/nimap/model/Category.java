@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -27,7 +28,7 @@ public class Category {
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "category")
-    @JsonBackReference
+    @JsonManagedReference
     private List<Product> products;
 
     @PrePersist
@@ -48,6 +49,14 @@ public class Category {
 		this.createdAt = createdAt;
 		this.products = products;
 	}
+
+	@Override
+	public String toString() {
+		return "Category [c_id=" + c_id + ", c_name=" + c_name + ", description=" + description + ", createdAt="
+				+ createdAt + ", products=" + products + "]";
+	}
+	
+	
     
     
     
